@@ -7,11 +7,11 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 HYPHEN_E_DOT = '-e .'
 
-SRC_REPO = "MlProjectTemplate"
+SRC_REPO = "CreditRiskSpectrum"
 __version__ = "0.0.0"
-AUTHOR_USER_NAME = "author_name"
-AUTHOR_EMAIL = "author_email"
-REPO_NAME = "repo_name"
+AUTHOR_USER_NAME = "heydido"
+AUTHOR_EMAIL = "aashish4.iitd@gmail.com"
+REPO_NAME = "CreditRiskSpectrum"
 
 
 def get_requirements(file_path: str) -> List[str]:
@@ -32,7 +32,7 @@ setup(
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description="A brief description of the project",
+    description="A machine learning project to classify credit risk.",
     long_description=long_description,
     long_description_content="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",

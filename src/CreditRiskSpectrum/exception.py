@@ -1,5 +1,5 @@
 import sys
-from src.MLProjectTemplate.logger import logging
+from src.CreditRiskSpectrum.logger import logging
 
 
 def error_message_detail(error, error_detail: sys):
