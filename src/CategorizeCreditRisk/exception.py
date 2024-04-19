@@ -1,5 +1,5 @@
 import sys
-from src.CreditRiskSpectrum.logger import logging
+from src.CategorizeCreditRisk.logger import logging
 
 
 def error_message_detail(error, error_detail: sys):

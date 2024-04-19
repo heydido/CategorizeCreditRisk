@@ -1,7 +1,7 @@
 import os
 import logging
 from datetime import datetime
-from src.CreditRiskSpectrum.constants import PROJECT_ROOT
+from src.CategorizeCreditRisk.constants import PROJECT_ROOT
 
 
 LOG_FILE = f"{datetime.now().strftime('%Y_%m_%d_%H_%M_%S')}.log"

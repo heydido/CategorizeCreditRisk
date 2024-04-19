@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 HYPHEN_E_DOT = '-e .'
 
-SRC_REPO = "CreditRiskSpectrum"
+SRC_REPO = "CategorizeCreditRisk"
 __version__ = "0.0.0"
 AUTHOR_USER_NAME = "heydido"
 AUTHOR_EMAIL = "aashish4.iitd@gmail.com"

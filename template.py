@@ -4,7 +4,7 @@ from pathlib import Path
 import logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s')
 
-project_name = "CreditRiskSpectrum"
+project_name = "CategorizeCreditRisk"
 
 list_of_files = [
     ".dvc/config",
