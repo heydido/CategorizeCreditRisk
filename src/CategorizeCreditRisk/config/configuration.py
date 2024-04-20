@@ -42,7 +42,9 @@ class ConfigurationManager:
                 root_dir=config.root_dir,
                 source_URL=config.source_URL,
                 data_file=config.data_file,
-                unzip_dir=config.unzip_dir
+                unzip_dir=config.unzip_dir,
+                internal_raw_file=config.internal_raw_file,
+                external_raw_file=config.external_raw_file
             )
 
             if log:

@@ -6,6 +6,8 @@ data_ingestion:
   source_URL: https://github.com/heydido/datasets/raw/main/CreditRiskModelingData.zip
   data_file: artifacts/data_ingestion/CreditRiskModelingData.zip
   unzip_dir: artifacts/data_ingestion
+  internal_raw_file: artifacts/data_ingestion/case_study1.xlsx
+  external_raw_file: artifacts/data_ingestion/case_study2.xlsx
 
 data_validation:
   root_dir: artifacts/data_validation

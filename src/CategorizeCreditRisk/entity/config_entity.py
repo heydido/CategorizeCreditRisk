@@ -8,6 +8,8 @@ class DataIngestionConfig:
     source_URL: str
     data_file: Path
     unzip_dir: Path
+    internal_raw_file: Path
+    external_raw_file: Path
 
 
 @dataclass(frozen=True)

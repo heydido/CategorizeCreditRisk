@@ -38,7 +38,7 @@ class DataIngestion:
         try:
             os.makedirs(self.config.unzip_dir, exist_ok=True)
 
-            if not os.path.exists(self.config.raw_dataset):
+            if not os.path.exists(self.config.internal_raw_file) or not os.path.exists(self.config.external_raw_file):
                 logging.info("Unzipping data file:")
 
                 with zipfile.ZipFile(self.config.data_file, 'r') as zip_ref:
@@ -47,7 +47,7 @@ class DataIngestion:
                 logging.info(f"Data file unzipped successfully at: {self.config.unzip_dir}")
 
             else:
-                logging.info(f"Raw (unzipped) file already present at: {self.config.raw_dataset}")
+                logging.info(f"Raw (unzipped) file already present at: {self.config.unzip_dir}")
 
         except Exception as e:
             logging.error(f"Error occurred while unzipping data file!")
