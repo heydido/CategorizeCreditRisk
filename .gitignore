@@ -161,3 +161,6 @@ cython_debug/
 
 # Dataset to be ignored
 notebooks/data/
+
+# Artifacts to be ignored
+artifacts/
