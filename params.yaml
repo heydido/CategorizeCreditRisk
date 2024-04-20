@@ -1,0 +1,8 @@
+RandomForestRegressor:
+  criterion: absolute_error
+  max_depth: null
+  max_features: null
+  min_samples_leaf: 2
+  min_samples_split: 5
+  n_estimators: 100
+  random_state: 42

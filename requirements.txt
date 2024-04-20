@@ -15,6 +15,7 @@ python-box
 ensure
 pyYAML
 joblib
+openpyxl
 
 dvc
 dvc_s3

@@ -1,0 +1,43 @@
+
+cat_features:
+  city: object
+  sex: object
+  social_class: object
+  primary_business: object
+  secondary_business: object
+  type_of_house: object
+  loan_purpose: object
+  home_ownership: float64
+  sanitary_availability: float64
+  water_availabity: float64
+
+discrete_num_features:
+  old_dependents: int64
+  young_dependents: int64
+  occupants_count: int64
+  loan_tenure: int64
+  loan_installments: int64
+
+continuous_num_features:
+  age: int64
+  annual_income: float64
+  monthly_expenses: float64
+  house_area: float64
+
+
+selected_features:
+  age: int64
+  sex: object
+  annual_income: float64
+  monthly_expenses: float64
+  old_dependents: int64
+  young_dependents: int64
+  home_ownership:  float64
+  type_of_house: object
+  occupants_count: int64
+  house_area: float64
+  loan_tenure: int64
+  loan_installments: int64
+
+target_variable:
+  loan_amount: float64

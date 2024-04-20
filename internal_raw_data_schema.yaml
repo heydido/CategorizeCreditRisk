@@ -1,0 +1,27 @@
+features:
+  prospectid: int64
+  total_tl: int64
+  tot_closed_tl: int64
+  tot_active_tl: int64
+  total_tl_opened_l6m: int64
+  tot_tl_closed_l6m: int64
+  pct_tl_open_l6m: float64
+  pct_tl_closed_l6m: float64
+  pct_active_tl: float64
+  pct_closed_tl: float64
+  total_tl_opened_l12m: int64
+  tot_tl_closed_l12m: int64
+  pct_tl_open_l12m: float64
+  pct_tl_closed_l12m: float64
+  tot_missed_pmnt: int64
+  auto_tl: int64
+  cc_tl: int64
+  consumer_tl: int64
+  gold_tl: int64
+  home_tl: int64
+  pl_tl: int64
+  secured_tl: int64
+  unsecured_tl: int64
+  other_tl: int64
+  age_oldest_tl: int64
+  age_newest_tl: int64
