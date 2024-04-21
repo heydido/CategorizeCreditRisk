@@ -158,7 +158,7 @@ class ConfigurationManager:
                 logging.info("Getting model training configuration:")
 
             config = self.config.model_training
-            model_params = self.params.RandomForestRegressor
+            model_params = self.params.XGBClassifier
 
             create_directories([config.root_dir])
 
