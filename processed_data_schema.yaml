@@ -1,43 +1,48 @@
-
 cat_features:
-  city: object
-  sex: object
-  social_class: object
-  primary_business: object
-  secondary_business: object
-  type_of_house: object
-  loan_purpose: object
-  home_ownership: float64
-  sanitary_availability: float64
-  water_availabity: float64
+  maritalstatus: object
+  gender: object
+  last_prod_enq2: object
+  first_prod_enq2: object
 
-discrete_num_features:
-  old_dependents: int64
-  young_dependents: int64
-  occupants_count: int64
-  loan_tenure: int64
-  loan_installments: int64
-
-continuous_num_features:
-  age: int64
-  annual_income: float64
-  monthly_expenses: float64
-  house_area: float64
-
-
-selected_features:
-  age: int64
-  sex: object
-  annual_income: float64
-  monthly_expenses: float64
-  old_dependents: int64
-  young_dependents: int64
-  home_ownership:  float64
-  type_of_house: object
-  occupants_count: int64
-  house_area: float64
-  loan_tenure: int64
-  loan_installments: int64
+num_features:
+  pct_tl_open_l6m: float64
+  pct_tl_closed_l6m: float64
+  tot_tl_closed_l12m: int64
+  pct_tl_closed_l12m: float64
+  tot_missed_pmnt: int64
+  cc_tl: int64
+  home_tl: int64
+  pl_tl: int64
+  secured_tl: int64
+  unsecured_tl: int64
+  other_tl: int64
+  age_oldest_tl: int64
+  age_newest_tl: int64
+  time_since_recent_payment: int64
+  max_recent_level_of_deliq: int64
+  num_deliq_6_12mts: int64
+  num_times_60p_dpd: int64
+  num_std_12mts: int64
+  num_sub: int64
+  num_sub_6mts: int64
+  num_sub_12mts: int64
+  num_dbt: int64
+  num_dbt_12mts: int64
+  num_lss: int64
+  recent_level_of_deliq: int64
+  cc_enq_l12m: int64
+  pl_enq_l12m: int64
+  time_since_recent_enq: int64
+  enq_l3m: int64
+  netmonthlyincome: int64
+  time_with_curr_empr: int64
+  cc_flag: int64
+  pl_flag: int64
+  pct_pl_enq_l6m_of_ever: float64
+  pct_cc_enq_l6m_of_ever: float64
+  hl_flag: int64
+  gl_flag: int64
+  education: int64
 
 target_variable:
-  loan_amount: float64
+  approved_flag: object

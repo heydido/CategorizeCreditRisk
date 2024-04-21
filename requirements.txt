@@ -3,6 +3,7 @@ pandas
 seaborn
 matplotlib
 
+statsmodels
 scikit-learn
 XGBoost
 

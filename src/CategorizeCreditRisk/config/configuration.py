@@ -23,7 +23,7 @@ class ConfigurationManager:
         self.config = read_yaml(config_filepath)
         self.internal_raw_data_schema = read_yaml(internal_raw_data_schema_filepath)
         self.external_raw_data_schema = read_yaml(external_raw_data_schema_filepath)
-        self.processed_dat_schema = read_yaml(processed_data_schema_filepath)
+        self.processed_data_schema = read_yaml(processed_data_schema_filepath)
         self.params = read_yaml(params_filepath)
 
         # Artifact root directory
@@ -94,9 +94,9 @@ class ConfigurationManager:
                 logging.info("Getting data preprocessing configuration:")
 
             config = self.config.data_preprocessing
-            cat_features = self.processed_schema.cat_features
-            num_features = self.processed_schema.num_features
-            target_variable = self.processed_schema.target_variable
+            cat_features = self.processed_data_schema.cat_features
+            num_features = self.processed_data_schema.num_features
+            target_variable = self.processed_data_schema.target_variable
 
             create_directories([config.root_dir])
 
@@ -104,7 +104,7 @@ class ConfigurationManager:
                 root_dir=config.root_dir,
                 internal_raw_file=config.internal_raw_file,
                 external_raw_file=config.external_raw_file,
-                raw_dataset=config.raw_dataset,
+                cleaned_raw_dataset=config.cleaned_raw_dataset,
                 preprocessed_dataset=config.preprocessed_dataset,
                 cat_features=cat_features,
                 num_features=num_features,
@@ -127,11 +127,9 @@ class ConfigurationManager:
                 logging.info("Getting data transformation configuration:")
 
             config = self.config.data_transformation
-            cat_features = self.processed_schema.cat_features
-            discrete_num_features = self.processed_schema.discrete_num_features
-            continuous_num_features = self.processed_schema.continuous_num_features
-            selected_features = self.processed_schema.selected_features
-            target_variable = self.processed_schema.target_variable
+            cat_features = self.processed_data_schema.cat_features
+            num_features = self.processed_data_schema.num_features
+            target_variable = self.processed_data_schema.target_variable
 
             create_directories([config.root_dir])
 
@@ -139,9 +137,7 @@ class ConfigurationManager:
                 root_dir=config.root_dir,
                 preprocessed_dataset=config.preprocessed_dataset,
                 cat_features=cat_features,
-                discrete_num_features=discrete_num_features,
-                continuous_num_features=continuous_num_features,
-                selected_features=selected_features,
+                num_features=num_features,
                 target_variable=target_variable,
                 data_transformer=config.data_transformer
             )

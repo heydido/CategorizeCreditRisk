@@ -28,7 +28,7 @@ class DataPreprocessingConfig:
     root_dir: Path
     internal_raw_file: Path
     external_raw_file: Path
-    raw_dataset: Path
+    cleaned_raw_dataset: Path
     preprocessed_dataset: Path
     cat_features: list
     num_features: list
@@ -40,9 +40,7 @@ class DataTransformationConfig:
     root_dir: Path
     preprocessed_dataset: Path
     cat_features: list
-    discrete_num_features: list
-    continuous_num_features: list
-    selected_features: list
+    num_features: list
     target_variable: str
     data_transformer: Path
 

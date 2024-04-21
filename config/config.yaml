@@ -20,7 +20,7 @@ data_preprocessing:
   root_dir: artifacts/data_preprocessing
   internal_raw_file: artifacts/data_ingestion/case_study1.xlsx
   external_raw_file: artifacts/data_ingestion/case_study2.xlsx
-  raw_dataset: artifacts/data_ingestion/CreditRiskModelingData.csv
+  cleaned_raw_dataset: artifacts/data_preprocessing/CreditRiskModelingData.csv
   preprocessed_dataset: artifacts/data_preprocessing/processed_data.csv
 
 data_transformation:
