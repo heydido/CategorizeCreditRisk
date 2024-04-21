@@ -19,7 +19,7 @@ class ModelTrainer:
         self.config = config
 
     @staticmethod
-    def _get_data(log=True):
+    def get_data(log=True):
         try:
             if log:
                 logging.info("> Getting data for model training:")
@@ -43,7 +43,7 @@ class ModelTrainer:
         try:
             logging.info("> Training model:")
 
-            x_train, x_test, y_train, y_test = self._get_data()
+            x_train, x_test, y_train, y_test = self.get_data()
 
             # Initialize DagsHub
             # Note: Comment below line to run experiment/save model locally
