@@ -64,7 +64,7 @@ class ModelTrainer:
 
                 logging.info("Logged model parameters successfully! Training Started....")
 
-                xgbc = XGBClassifier(**model_params, verbose=2, n_jobs=-1)
+                xgbc = XGBClassifier(**model_params, n_jobs=-1)
                 xgbc.fit(x_train, y_train)
 
                 logging.info("Model trained successfully!")
