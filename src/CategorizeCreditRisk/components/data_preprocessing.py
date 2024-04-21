@@ -257,14 +257,16 @@ class DataPreprocessing:
             assert sorted(list(self.num_features)) == sorted(retained_num_features), \
                 "Final num_features does not match with its schema!"
 
+            # Add target variable to the end
+            target_variable = list(self.target_variable)[0]
+            df_selected_features.loc[:, target_variable] = cr_df[target_variable]
+
             logging.info("Dropped unused columns. Preprocessed data ready to export!")
 
             if save_csv:
                 logging.info("Exporting preprocessed data:")
                 df_selected_features.to_csv(self.config.preprocessed_dataset, index=False)
                 logging.info("Preprocessed data exported successfully!")
-
-            return df_selected_features
 
         except Exception as e:
             logging.error(f"Error occurred while getting preprocessed data!")
