@@ -1,0 +1,66 @@
+stages:
+  data_ingestion:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_ingestion.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/CreditRiskModelingData.zip
+      - artifacts/data_ingestion/case_study1.xlsx
+      - artifacts/data_ingestion/case_study2.xlsx
+
+  data_validation:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_validation.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/data_validation.py
+      - config/config.yaml
+      - artifacts/data_ingestion/case_study1.xlsx
+      - artifacts/data_ingestion/case_study2.xlsx
+      - internal_raw_data_schema.yaml
+      - external_raw_data_schema.yaml
+    outs:
+      - artifacts/data_validation/internal_file_val_status.txt
+      - artifacts/data_validation/external_file_val_status.txt
+
+  data_preprocessing:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_preprocessing.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/data_preprocessing.py
+      - config/config.yaml
+      - artifacts/data_ingestion/case_study1.xlsx
+      - artifacts/data_ingestion/case_study2.xlsx
+      - processed_data_schema.yaml
+    outs:
+      - artifacts/data_preprocessing/CreditRiskModelingData.csv
+      - artifacts/data_preprocessing/processed_data.csv
+
+  data_transformation:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_transformation.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/data_transformation.py
+      - config/config.yaml
+      - processed_data_schema.yaml
+      - artifacts/data_preprocessing/processed_data.csv
+    outs:
+      - artifacts/data_transformation/data_transformer.pkl
+
+  model_training:
+    cmd: python src/CategorizeCreditRisk/pipeline/model_training.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/model_training.py
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/model_training/latest_run_id.txt
+
+  model_evaluation:
+    cmd: python src/CategorizeCreditRisk/pipeline/model_evaluation.py
+    deps:
+      - src/CategorizeCreditRisk/pipeline/model_evaluation.py
+      - config/config.yaml
+      - params.yaml
+      - artifacts/model_training/latest_run_id.txt
+      - artifacts/data_transformation/data_transformer.pkl
+    outs:
+      - artifacts/model_evaluation/test_metrics.txt
+      - artifacts/model_evaluation/train_metrics.txt

@@ -1,0 +1,170 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: src/CategorizeCreditRisk/pipeline/data_ingestion.py
+      hash: md5
+      md5: 38a5a863e842cf3dc1a376cf6f2e6fd7
+      size: 1111
+    outs:
+    - path: artifacts/data_ingestion/CreditRiskModelingData.zip
+      hash: md5
+      md5: 3af1d570bcb28ca089694471b36aef1b
+      size: 17209994
+    - path: artifacts/data_ingestion/case_study1.xlsx
+      hash: md5
+      md5: 0826d1bf9d2604ec81984d79828caed6
+      size: 5382959
+    - path: artifacts/data_ingestion/case_study2.xlsx
+      hash: md5
+      md5: 3c5a697f00f4fdeb14a291d555881d59
+      size: 13268022
+  data_validation:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/case_study1.xlsx
+      hash: md5
+      md5: 0826d1bf9d2604ec81984d79828caed6
+      size: 5382959
+    - path: artifacts/data_ingestion/case_study2.xlsx
+      hash: md5
+      md5: 3c5a697f00f4fdeb14a291d555881d59
+      size: 13268022
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: external_raw_data_schema.yaml
+      hash: md5
+      md5: 44854f7e703f54b303f537eb969bedfb
+      size: 1594
+    - path: internal_raw_data_schema.yaml
+      hash: md5
+      md5: ad5912ec460ce63f8641c432f17b2e8f
+      size: 632
+    - path: src/CategorizeCreditRisk/pipeline/data_validation.py
+      hash: md5
+      md5: 8812883a1576027d4e36483f960efc09
+      size: 1087
+    outs:
+    - path: artifacts/data_validation/external_file_val_status.txt
+      hash: md5
+      md5: 86e6a2f694c57a675b3e2da6b95ff9ba
+      size: 23
+    - path: artifacts/data_validation/internal_file_val_status.txt
+      hash: md5
+      md5: 86e6a2f694c57a675b3e2da6b95ff9ba
+      size: 23
+  data_preprocessing:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_preprocessing.py
+    deps:
+    - path: artifacts/data_ingestion/case_study1.xlsx
+      hash: md5
+      md5: 0826d1bf9d2604ec81984d79828caed6
+      size: 5382959
+    - path: artifacts/data_ingestion/case_study2.xlsx
+      hash: md5
+      md5: 3c5a697f00f4fdeb14a291d555881d59
+      size: 13268022
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: processed_data_schema.yaml
+      hash: md5
+      md5: 4673e26c5b6380ad8e884cddf2dc0d5f
+      size: 1100
+    - path: src/CategorizeCreditRisk/pipeline/data_preprocessing.py
+      hash: md5
+      md5: 65766b1c1a6e1485fb98a56a03ba9601
+      size: 1186
+    outs:
+    - path: artifacts/data_preprocessing/CreditRiskModelingData.csv
+      hash: md5
+      md5: 59f8f19a219a82c8fae448187e84330f
+      size: 9798366
+    - path: artifacts/data_preprocessing/processed_data.csv
+      hash: md5
+      md5: 235adcc9ba76be75e161b87e0c60fa10
+      size: 5355939
+  data_transformation:
+    cmd: python src/CategorizeCreditRisk/pipeline/data_transformation.py
+    deps:
+    - path: artifacts/data_preprocessing/processed_data.csv
+      hash: md5
+      md5: 235adcc9ba76be75e161b87e0c60fa10
+      size: 5355939
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: processed_data_schema.yaml
+      hash: md5
+      md5: 4673e26c5b6380ad8e884cddf2dc0d5f
+      size: 1100
+    - path: src/CategorizeCreditRisk/pipeline/data_transformation.py
+      hash: md5
+      md5: 4908732680d9561ebd763651da2a28d1
+      size: 1135
+    outs:
+    - path: artifacts/data_transformation/data_transformer.pkl
+      hash: md5
+      md5: ba8f79daf0b77f2b905b76cd9ec9d516
+      size: 4183
+  model_training:
+    cmd: python src/CategorizeCreditRisk/pipeline/model_training.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: params.yaml
+      hash: md5
+      md5: 743570081091bacc5a34cad7f34065fc
+      size: 156
+    - path: src/CategorizeCreditRisk/pipeline/model_training.py
+      hash: md5
+      md5: e89f505d8ff92b7f1377fa614d29d139
+      size: 1067
+    outs:
+    - path: artifacts/model_training/latest_run_id.txt
+      hash: md5
+      md5: 20c76e11995a5ab7d0e10769b95acc2e
+      size: 32
+  model_evaluation:
+    cmd: python src/CategorizeCreditRisk/pipeline/model_evaluation.py
+    deps:
+    - path: artifacts/data_transformation/data_transformer.pkl
+      hash: md5
+      md5: ba8f79daf0b77f2b905b76cd9ec9d516
+      size: 4183
+    - path: artifacts/model_training/latest_run_id.txt
+      hash: md5
+      md5: 20c76e11995a5ab7d0e10769b95acc2e
+      size: 32
+    - path: config/config.yaml
+      hash: md5
+      md5: 6ba5255f3fd3395eea0f89cfaa0e53dc
+      size: 1944
+    - path: params.yaml
+      hash: md5
+      md5: 743570081091bacc5a34cad7f34065fc
+      size: 156
+    - path: src/CategorizeCreditRisk/pipeline/model_evaluation.py
+      hash: md5
+      md5: 1798286fb1fe7084fde88f47c4f6083f
+      size: 1100
+    outs:
+    - path: artifacts/model_evaluation/test_metrics.txt
+      hash: md5
+      md5: c7be2c94f38b545bba15d96a8522276a
+      size: 51
+    - path: artifacts/model_evaluation/train_metrics.txt
+      hash: md5
+      md5: fbf794864155d32d2171bca3eed25701
+      size: 52
