@@ -17,7 +17,7 @@ class PredictionPipeline:
         self.predictor = Predictor(config=self.prediction_config)
 
     def predict(self, custom_data):
-        logging.info(f"Predicting RiskCategory for:\n {json.dumps(custom_data.input_data, indent=4)}")
+        # TODO: logging.info(f"Predicting RiskCategory for:\n {json.dumps(custom_data.input_data, indent=4)}")
 
         # Input Data
         input_data = custom_data.get_data_as_df()
