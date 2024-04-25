@@ -2,6 +2,7 @@ import sys
 import json
 from src.CategorizeCreditRisk.logger import logging
 from src.CategorizeCreditRisk.exception import CustomException
+
 from src.CategorizeCreditRisk.config.configuration import ConfigurationManager
 from src.CategorizeCreditRisk.components.prediction import CustomData, Predictor
 
