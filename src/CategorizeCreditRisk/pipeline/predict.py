@@ -11,22 +11,17 @@ STAGE_NAME = "Prediction"
 
 class PredictionPipeline:
     def __init__(self):
-        pass
+        self.config_manager = ConfigurationManager()
+        self.prediction_config = self.config_manager.get_prediction_config()
+        self.predictor = Predictor(config=self.prediction_config)
 
-    @staticmethod
-    def main(custom_data):
-
+    def predict(self, custom_data):
         logging.info(f"Predicting RiskCategory for:\n {json.dumps(custom_data.input_data, indent=4)}")
 
         # Input Data
         input_data = custom_data.get_data_as_df()
 
-        # Get Prediction
-        config_manager = ConfigurationManager()
-        prediction_config = config_manager.get_prediction_config()
-        predictor = Predictor(config=prediction_config)
-
-        return predictor.predict(input_data)
+        return self.predictor.predict(input_data)
 
 
 if __name__ == '__main__':
@@ -81,7 +76,7 @@ if __name__ == '__main__':
             education=3
         )
 
-        loan_amount = prediction.main(pred_datapoint)
+        loan_amount = prediction.predict(pred_datapoint)
 
         logging.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
 
