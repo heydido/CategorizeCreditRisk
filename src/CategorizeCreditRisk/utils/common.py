@@ -28,19 +28,19 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         ConfigBox: ConfigBox typ
     """
     try:
-        logging.info(f"Reading yaml file: {path_to_yaml}")
+        logging.info(f"> Reading yaml file: {path_to_yaml}")
 
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
 
-            logging.info(f"Yaml file read successfully: {path_to_yaml}")
+            logging.info(f"Yaml file read successfully: {path_to_yaml}!")
 
             return ConfigBox(content)
 
     except BoxValueError:
         raise ValueError("yaml file is empty")
     except Exception as e:
-        logging.error(f"Error reading yaml file: {path_to_yaml}")
+        logging.error(f"Error reading yaml file: {path_to_yaml}!")
         raise CustomException(e, sys)
 
 
@@ -58,11 +58,11 @@ def create_directories(path_to_directories: list):
     try:
         for path in path_to_directories:
             if not os.path.exists(path):
-                logging.info(f"Creating directory: {path}")
+                logging.info(f"> Creating directory: {path}")
 
                 os.makedirs(path)
 
-                logging.info(f"Directory created successfully: {path}")
+                logging.info(f"Directory created successfully: {path}!")
 
             else:
                 logging.info(f"Directory already exists: {path}. Skipping creating directory!")
@@ -85,15 +85,15 @@ def save_json(path: Path, data: dict):
         None
     """
     try:
-        logging.info(f"Saving json file to: {path}")
+        logging.info(f"> Saving json file to: {path}")
 
         with open(path, "w") as f:
             json.dump(data, f, indent=4)
 
-        logging.info(f"json file saved at: {path}")
+        logging.info(f"json file saved at: {path}!")
 
     except Exception as e:
-        logging.error(f"Error saving json file to: {path} ")
+        logging.error(f"Error saving json file to: {path}!")
         raise CustomException(e, sys)
 
 
@@ -109,16 +109,16 @@ def load_json(path: Path) -> ConfigBox:
         ConfigBox: data as class attributes instead of dict
     """
     try:
-        logging.info(f"Loading json file from: {path}")
+        logging.info(f"> Loading json file from: {path}")
 
         with open(path) as f:
             content = json.load(f)
 
-        logging.info(f"json file loaded successfully from: {path}")
+        logging.info(f"json file loaded successfully from: {path}!")
         return ConfigBox(content)
 
     except Exception as e:
-        logging.error(f"Error loading json file from: {path}")
+        logging.error(f"Error loading json file from: {path}!")
         raise CustomException(e, sys)
 
 
@@ -132,14 +132,14 @@ def save_bin(data: Any, path: Path):
         path (Path): path to binary file
     """
     try:
-        logging.info(f"Saving binary file to: {path}")
+        logging.info(f"> Saving binary file to: {path}")
 
         joblib.dump(value=data, filename=path)
 
-        logging.info(f"Binary file saved at: {path}")
+        logging.info(f"Binary file saved at: {path}!")
 
     except Exception as e:
-        logging.error(f"Error saving binary file to: {path}")
+        logging.error(f"Error saving binary file to: {path}!")
         raise CustomException(e, sys)
 
 
@@ -155,15 +155,15 @@ def load_bin(path: Path) -> Any:
         Any: object stored in the file
     """
     try:
-        logging.info(f"Loading binary file from: {path}")
+        logging.info(f"> Loading binary file from: {path}")
 
         data = joblib.load(path)
 
-        logging.info(f"binary file loaded successfully from: {path}")
+        logging.info(f"Binary file loaded successfully from: {path}!")
         return data
 
     except Exception as e:
-        logging.error(f"Error loading binary file from: {path}")
+        logging.error(f"Error loading binary file from: {path}!")
         raise CustomException(e, sys)
 
 
@@ -179,12 +179,12 @@ def get_size(path: Path) -> str:
         str: size in KB
     """
     try:
-        logging.info(f"Getting size of file: {path}")
+        logging.info(f"> Getting size of file: {path}")
 
         size_in_kb = round(os.path.getsize(path) / 1024)
 
         return f"~ {size_in_kb} KB"
 
     except Exception as e:
-        logging.error(f"Error getting size of file: {path}")
+        logging.error(f"Error getting size of file: {path}!")
         raise CustomException(e, sys)
